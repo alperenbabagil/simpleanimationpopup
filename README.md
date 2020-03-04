@@ -40,4 +40,9 @@ SapDialog(this).apply {
   isOnlyAnimation=true
 }.build().show()
 ```
+![](https://media.giphy.com/media/eGsR8bv3VNM40iKYK7/giphy.gif)
+
+## Customization
+
+The popup is highly customizable, you can even load entire custom layout. All you have to do is create xml,style with name library used. By default library uses `colorPrimary`, `colorPrimaryDark` and `colorAccent` values that app uses
 

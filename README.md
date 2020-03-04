@@ -15,7 +15,7 @@ allprojects {
 ```
 Add the dependency
 ```gradle
-implementation 'com.github.alperenbabagil:simpleanimationpopup:1.0.0'
+implementation 'com.github.alperenbabagil:simpleanimationpopup:1.0.1'
 ```
 
 ## Usage
@@ -70,7 +70,7 @@ If you want partial customization, you can override `styles.xml` values. Keys st
         <item name="android:paddingBottom">@dimen/SapMessageBottomPadding</item>
 </style>
 ```
-this style element arranges popup message view. You can add a style element to your app's style file with `SapMessageTVStyle` key to change popup message textview. 
+this style element arranges popup message view. You can add a style element to your app's style file with `SapMessageTVStyle` key to change popup message textview. You can see all styles in here: [styles.xml](https://github.com/alperenbabagil/simpleanimationpopup/blob/master/simpleanimationpopuplibrary/src/main/res/values/styles.xml)
 
 ### Popup title color
 You can change popup title color dynamically by setting `titleTextColor` property to desired color resource id.

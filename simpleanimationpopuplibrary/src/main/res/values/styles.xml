@@ -8,7 +8,7 @@
     </style>
 
     <style name="SapMessageTVStyle" parent="Theme.AppCompat">
-        <item name="android:textColor">@color/sapTextColor</item>
+        <item name="android:textColor">@color/sapMessageTextColor</item>
         <item name="android:textSize">20sp</item>
         <item name="android:gravity">center</item>
         <item name="android:paddingTop">@dimen/SapMessageTopPadding</item>
@@ -56,7 +56,6 @@
     <style name="SapOnlyAnimationRootLayoutStyle" parent="Theme.AppCompat">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_width">wrap_content</item>
-        <item name="android:background">@android:color/transparent</item>
     </style>
 
     <style name="SapOnlyAnimationStyle" parent="Theme.AppCompat">

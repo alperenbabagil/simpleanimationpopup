@@ -34,7 +34,7 @@ SapDialog(this).apply {
 }.build().show()
 ```
 
-If you want to show only animation (designed for especially loading popups) you must set `isOnlyAnimation` parameter to true.
+If you want to show only animation (designed for especially loading popups) you must set `isOnlyAnimation` property to true.
 ```kotlin
 SapDialog(this).apply {
   isOnlyAnimation=true
@@ -44,5 +44,39 @@ SapDialog(this).apply {
 
 ## Customization
 
-The popup is highly customizable, you can even load entire custom layout. All you have to do is create xml,style with name library used. By default library uses `colorPrimary`, `colorPrimaryDark` and `colorAccent` values that app uses
+The popup is highly customizable, you can even load entire custom layout. All you have to do is create xml,style with name library used. By default library uses `colorPrimary`, `colorPrimaryDark` and `colorAccent` values that app uses.
+
+### Animations
+
+The libary uses [Lottie](https://lottiefiles.com/) files to show animations. By default library has 2 animations: sap_error_anim.json and sap_loading_anim.json. If you add lottie animation files to `R.raw` direction with same names, these animations will be overriden by your animations. 
+
+If you want to set popup animation dynamically, you must set `animResource` property as desired animation file that resides in `R.raw` resource id.  
+```kotlin
+SapDialog(this).apply {
+  animResource=R.raw.my_super_animation
+}.build().show()
+```
+Animation loop state is arranged by `loopAnimation` property. If it is true animation will never stop. Else, animation will play only once.
+
+Animation auto start state is arranged by `autoStartAnimation` property. If it is true animation will start playing as soon as it becomes visible. Else, animation will not play until it intentionally started via startAnimation() method.
+
+### Resource keys
+
+You can override library resources by adding desired resources to your resource direction with names that popup library uses.
+The library uses 2 layout resource files to construct dialog layout: `simple_animation_popup_layout` used to popup with title,message,buttons etc. `simple_only_animation_popup` is used to show dialog with only animation view. You can override these layout if you want to change layout completely.
+
+If you want partial customization, you can override `styles.xml` values. Keys start with Sap and ends with related view. For example:
+```xml
+<style name="SapMessageTVStyle" parent="Theme.AppCompat">
+	<item name="android:textColor">@color/sapMessageTextColor</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">@dimen/SapMessageTopPadding</item>
+        <item name="android:paddingBottom">@dimen/SapMessageBottomPadding</item>
+</style>
+```
+this style element arranges popup message view. You can add a style element to your app's style file with `SapMessageTVStyle` key to change popup message textview. 
+
+
+
 

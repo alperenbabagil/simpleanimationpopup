@@ -28,6 +28,7 @@ class SapDialog(private val activity: Activity)  {
     private var sapDismissEvent : () -> Unit = {}
     private var positiveButtonVisible =false
     private var negativeButtonVisible =false
+    private var animationView : LottieAnimationView?=null
 
     fun addPositiveButton(buttonText : String,clickEvent : () -> Unit){
         positiveButtonVisible=true
@@ -70,34 +71,38 @@ class SapDialog(private val activity: Activity)  {
         dialog.cancel()
     }
 
+    fun startAnimation(){
+        animationView?.playAnimation()
+    }
+
     private fun createView() : View{
         val inflater: LayoutInflater = activity.layoutInflater
 
         // if isOnlyAnimation set to true 'simple_only_animation_popup.xml' will be loaded. Else 'simple_animation_popup_layout' will be loaded
         val res=if(isOnlyAnimation) R.layout.simple_only_animation_popup else R.layout.simple_animation_popup_layout
         val dialogView = inflater.inflate(res,null,false)
-        val animationView = dialogView.findViewById<LottieAnimationView>(R.id.sapAnimationView)
+        animationView = dialogView.findViewById<LottieAnimationView>(R.id.sapAnimationView)
 
         animResource?.let {
-            animationView.setAnimation(it)
+            animationView?.setAnimation(it)
         }?: kotlin.run {
             // loading default animations
             if(isOnlyAnimation){
-                animationView.setAnimation(R.raw.sap_loading_anim)
+                animationView?.setAnimation(R.raw.sap_loading_anim)
             }
-            else animationView.setAnimation(R.raw.sap_error_anim)
+            else animationView?.setAnimation(R.raw.sap_error_anim)
         }
 
         loopAnimation?.let {
-            if(it) animationView.repeatCount= INFINITE
-            else animationView.repeatCount=0
+            if(it) animationView?.repeatCount= INFINITE
+            else animationView?.repeatCount=0
         } ?: kotlin.run {
             //setting default animation loop state.
-            if(isOnlyAnimation) animationView.repeatCount= INFINITE
-            else animationView.repeatCount=0
+            if(isOnlyAnimation) animationView?.repeatCount= INFINITE
+            else animationView?.repeatCount=0
         }
 
-        if(!autoStartAnimation) animationView.pauseAnimation()
+        if(!autoStartAnimation) animationView?.pauseAnimation()
 
         // shows with a dialog with title, animation view and action buttons
         if(!isOnlyAnimation){

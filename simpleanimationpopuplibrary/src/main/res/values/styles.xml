@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SapTitleTVStyle" parent="Theme.AppCompat">
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="SapMessageTVStyle" parent="Theme.AppCompat">
+        <item name="android:textColor">@color/sapTextColor</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">@dimen/SapMessageTopPadding</item>
+        <item name="android:paddingBottom">@dimen/SapMessageBottomPadding</item>
+    </style>
+
+    <style name="SapButtonStyle" parent="Theme.AppCompat">
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_margin">@dimen/SapButtonMargin</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="SapPositiveButtonStyle" parent="SapButtonStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/sap_positive_button_bg</item>
+    </style>
+
+    <style name="SapNegativeButtonStyle" parent="SapButtonStyle">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:background">@drawable/sap_negative_button_bg</item>
+
+    </style>
+
+    <style name="SapLayoutStyle" parent="Theme.AppCompat">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/sap_rounded_white_bg</item>
+    </style>
+
+    <style name="SapAnimationStyle" parent="Theme.AppCompat">
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_width">150dp</item>
+    </style>
+
+    <style name="SapOnlyAnimationRootLayoutStyle" parent="Theme.AppCompat">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="SapOnlyAnimationStyle" parent="Theme.AppCompat">
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_width">150dp</item>
+    </style>
+
+</resources>

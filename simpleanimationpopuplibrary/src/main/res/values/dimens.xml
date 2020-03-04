@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="SapCornerRadius">20dp</dimen>
+    <dimen name="SapPaddingLeftRight">10dp</dimen>
+    <dimen name="SapPaddingBottom">10dp</dimen>
+    <dimen name="SapPaddingTop">10dp</dimen>
+    <dimen name="SapButtonCornerRadius">10dp</dimen>
+    <dimen name="SapButtonStrokeWidth">2dp</dimen>
+    <dimen name="SapButtonMargin">15dp</dimen>
+    <dimen name="SapMessageTopPadding">10dp</dimen>
+    <dimen name="SapMessageBottomPadding">10dp</dimen>
+</resources>

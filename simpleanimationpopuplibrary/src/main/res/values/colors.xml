@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#1565c0</color>
+    <color name="colorPrimaryDark">#1051b7</color>
+    <color name="colorAccent">#1976d2</color>
+    <color name="sapBackground">@android:color/white</color>
+    <color name="sapTextColor">@android:color/tertiary_text_light</color>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Background color -->
+    <solid android:color="@color/sapBackground" />
+
+    <!-- The corners of the shape -->
+    <corners android:radius="@dimen/SapButtonCornerRadius"/>
+
+    <!-- The corners of the shape -->
+    <stroke android:width="@dimen/SapButtonStrokeWidth" android:color="@color/colorPrimary"/>
+
+    <!-- Padding for the background, e.g the Text inside a TextView will be
+    located differently -->
+    <padding android:left="@dimen/SapButtonCornerRadius" android:right="@dimen/SapButtonCornerRadius" />
+
+</shape>

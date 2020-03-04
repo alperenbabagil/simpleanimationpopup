@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/SapOnlyAnimationRootLayoutStyle"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_centerInParent="true"
+        android:id="@+id/sapAnimationView"
+        style="@style/SapOnlyAnimationStyle"
+        app:lottie_autoPlay="true"
+        />
+</RelativeLayout>

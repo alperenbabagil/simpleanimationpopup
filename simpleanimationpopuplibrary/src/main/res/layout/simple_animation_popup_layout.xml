@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/SapLayoutStyle"
+    >
+
+    <TextView
+        android:id="@+id/sapTitleTv"
+        style="@style/SapTitleTVStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        app:layout_constraintTop_toBottomOf="@id/sapTitleTv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/sapAnimationView"
+        style="@style/SapAnimationStyle"
+        app:lottie_loop="false"
+        android:scaleType="centerCrop"
+        app:lottie_autoPlay="true"/>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/sapAnimationView"
+        android:text="Bla bla... Bla bla...Bla bla...Bla bla...Bla bla...Bla bla...Bla bla...Bla bla..."
+        style="@style/SapMessageTVStyle"
+        android:id="@+id/sapMessageTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </TextView>
+
+    <Button
+        android:visibility="gone"
+        android:text="OK"
+        app:layout_constraintTop_toBottomOf="@id/sapMessageTv"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/sapButtonNegative"
+        android:id="@+id/sapButtonPositive"
+        style="@style/SapPositiveButtonStyle"
+        />
+
+    <Button
+        android:visibility="gone"
+        android:text="Cancel"
+        app:layout_constraintTop_toBottomOf="@id/sapMessageTv"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/sapButtonPositive"
+        android:id="@+id/sapButtonNegative"
+        style="@style/SapNegativeButtonStyle"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

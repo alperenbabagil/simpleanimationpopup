@@ -40,4 +40,4 @@ SapDialog(this).apply {
   isOnlyAnimation=true
 }.build().show()
 ```
-![](http://gph.is/1a7RlDR)
+![](https://media.giphy.com/media/XreQmk7ETCak0/giphy.gif)

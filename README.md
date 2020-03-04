@@ -1,6 +1,6 @@
 # Simple Animation Popup
 Showing popup with an animation view easily
 
-![Screenshot](https://i.imgur.com/pxqtJcc.png)
+![Screenshot](https://i.imgur.com/pxqtJcc.png | width="108" height="190")
 
 

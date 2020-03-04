@@ -1,7 +1,7 @@
 # Simple Animation Popup
 Showing popup with an animation view easily
 
-![Screenshot](https://i.imgur.com/pxqtJccl.png)
+![](https://media.giphy.com/media/VcxL0025VcDPVpLWsQ/giphy.gif)
 
 ## Installation
 
@@ -40,4 +40,4 @@ SapDialog(this).apply {
   isOnlyAnimation=true
 }.build().show()
 ```
-![](https://media.giphy.com/media/XreQmk7ETCak0/giphy.gif)
+

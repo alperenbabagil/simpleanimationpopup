@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
             "Dialog with dismiss listener",
             "Dialog with no message",
             "Dialog with custom title color",
-            "Default Alert Dialog with custom animation loop"
+            "Default Alert Dialog with custom animation loop",
+            "2 buttons cancellable dialog cancel listener"
         )
 
         val adapter = ArrayAdapter<String>(this,
@@ -124,6 +125,24 @@ class MainActivity : AppCompatActivity() {
                         }
                         animResource=R.raw.info
                         loopAnimation=true
+                    }.build().show()
+                }
+                11->{
+                    SapDialog(this).apply {
+                        titleText="Lorem ipsum"
+                        messageText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                        addPositiveButton("ok"){
+                            Toast.makeText(this@MainActivity,"positive button clicked",Toast.LENGTH_SHORT).show()
+                        }
+                        addNegativeButton("cancel"){
+                            Toast.makeText(this@MainActivity,"negative button clicked",Toast.LENGTH_SHORT).show()
+                        }
+                        addCancelEvent {
+                            Toast.makeText(this@MainActivity,"dialog cancelled",Toast.LENGTH_SHORT).show()
+                        }
+                        animResource=R.raw.info
+                        loopAnimation=true
+                        isCancellable=true
                     }.build().show()
                 }
             }

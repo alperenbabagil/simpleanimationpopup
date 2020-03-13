@@ -26,6 +26,7 @@ class SapDialog(private val activity: Activity)  {
     private var positiveButtonClickEvent : () -> Unit = {}
     private var negativeButtonClickEvent : () -> Unit = {}
     private var sapDismissEvent : () -> Unit = {}
+    private var sapCancelEvent : () -> Unit = {}
     private var positiveButtonVisible =false
     private var negativeButtonVisible =false
     private var animationView : LottieAnimationView?=null
@@ -46,11 +47,16 @@ class SapDialog(private val activity: Activity)  {
         sapDismissEvent=dismissEvent
     }
 
+    fun addCancelEvent(cancelEvent : () -> Unit){
+        sapCancelEvent=cancelEvent
+    }
+
     fun build() : SapDialog{
         dialog = AlertDialog.Builder(activity)
             .setView(createView())
             .setCancelable(isCancellable)
             .setOnDismissListener { sapDismissEvent.invoke() }
+            .setOnCancelListener { sapCancelEvent.invoke() }
             .create().apply {
                 window?.setBackgroundDrawableResource(android.R.color.transparent)
             }
@@ -69,6 +75,10 @@ class SapDialog(private val activity: Activity)  {
 
     fun cancel(){
         dialog.cancel()
+    }
+
+    fun dismiss(){
+        dialog.dismiss()
     }
 
     fun startAnimation(){
@@ -126,7 +136,7 @@ class SapDialog(private val activity: Activity)  {
                 dialogView.findViewById<Button>(R.id.sapButtonPositive).apply {
                     text=positiveButtonText
                     setOnClickListener {
-                        cancel()
+                        dismiss()
                         positiveButtonClickEvent.invoke()
                     }
                     visibility=View.VISIBLE

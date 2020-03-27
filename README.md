@@ -15,7 +15,7 @@ allprojects {
 ```
 Add the dependency
 ```gradle
-implementation 'com.github.alperenbabagil:simpleanimationpopup:1.0.1'
+implementation 'com.github.alperenbabagil:simpleanimationpopup:1.0.2'
 ```
 
 ## Usage
@@ -82,7 +82,7 @@ SapDialog(this).apply {
 
 ### Interaction
 
-You can show dialog with only positive button, only negative button, both buttons and no buttons at all. But if you show dialog  with no buttons make it cancellable or be sure that popup dismiss conditions well-implemented. You can set popup cancellability with `isCancellable` property. If you be aware of dialog dismiss event you must add a `addDismissEvent` property before build `SapDialog` instance via `addDismissEvent(dismissEvent : () -> Unit)` method. This is especially useful when showing loading dialogs.
+You can show dialog with only positive button, only negative button, both buttons and no buttons at all. But if you show dialog  with no buttons make it cancellable or be sure that popup dismiss conditions well-implemented. You can set popup cancellability with `isCancellable` property. If you be aware of dialog dismiss event you must add a `dismissEvent` property before build `SapDialog` instance via `addDismissEvent(dismissEvent : () -> Unit)` or add a `cancelEvent` via `addCancelEvent(cancelEvent : () -> Unit)` method. Cancel event triggered when user clicks negative button or outside of the popup or back button if it is cancellable. Dismiss event triggered whenever popup becomes unvisible. This is especially useful when showing loading dialogs.
 
 For adding buttons you must call `addPositiveButton(buttonText : String,clickEvent : () -> Unit)` and `addNegativeButton(buttonText : String,clickEvent : () -> Unit)` methods before build `SapDialog` instance. Example usage:
 

@@ -15,7 +15,7 @@ allprojects {
 ```
 Add the dependency
 ```gradle
-implementation 'com.github.alperenbabagil:simpleanimationpopup:1.0.2'
+implementation 'com.github.alperenbabagil:simpleanimationpopup:1.0.3'
 ```
 
 ## Usage
@@ -77,6 +77,14 @@ You can change popup title color dynamically by setting `titleTextColor` propert
 ```kotlin
 SapDialog(this).apply {
   titleTextColor=R.color.colorAccent
+}.build().show()
+```
+
+### Immersive mode support
+You can maintain immersive mode by setting `isFullScreen` property true. Demo app includes a showcase about this feature.
+```kotlin
+SapDialog(this).apply {
+  isFullScreen=true
 }.build().show()
 ```
 

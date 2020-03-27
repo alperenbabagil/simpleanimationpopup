@@ -2,13 +2,16 @@ package com.alperenbabagil.simpleanimationpopuplibrary
 
 import android.app.Activity
 import android.app.Dialog
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
+import android.view.WindowManager
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieDrawable.INFINITE
+
 
 class SapDialog(private val activity: Activity)  {
 
@@ -23,6 +26,7 @@ class SapDialog(private val activity: Activity)  {
     var loopAnimation:Boolean?=null
     var autoStartAnimation=true
     var titleTextColor:Int?=null
+    var isFullScreen=false
     private var positiveButtonClickEvent : () -> Unit = {}
     private var negativeButtonClickEvent : () -> Unit = {}
     private var sapDismissEvent : () -> Unit = {}
@@ -65,7 +69,30 @@ class SapDialog(private val activity: Activity)  {
 
     // to keep reference and show dialog with one method
     fun show() : Dialog{
+        // a hacky solution from stackoverflow
+        // making not focusable to not trigger system ui
+        if(isFullScreen){
+            dialog.window?.setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+        }
+
         dialog.show()
+
+        // adding fullscreen flags to dialog
+        if(isFullScreen){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                dialog.window?.decorView?.systemUiVisibility =
+                    (View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                            or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                            or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            or View.SYSTEM_UI_FLAG_FULLSCREEN
+                            or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY)
+            }
+        }
+
+        // making focusable again to interact with user
+        dialog.window?.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+
         return dialog
     }
 
@@ -91,7 +118,7 @@ class SapDialog(private val activity: Activity)  {
         // if isOnlyAnimation set to true 'simple_only_animation_popup.xml' will be loaded. Else 'simple_animation_popup_layout' will be loaded
         val res=if(isOnlyAnimation) R.layout.simple_only_animation_popup else R.layout.simple_animation_popup_layout
         val dialogView = inflater.inflate(res,null,false)
-        animationView = dialogView.findViewById<LottieAnimationView>(R.id.sapAnimationView)
+        animationView = dialogView.findViewById(R.id.sapAnimationView)
 
         animResource?.let {
             animationView?.setAnimation(it)

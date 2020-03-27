@@ -1,6 +1,8 @@
 package com.alperenbabagil.simpleanimationpopup
 
 import android.os.Bundle
+import android.os.Handler
+import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -26,7 +28,8 @@ class MainActivity : AppCompatActivity() {
             "Dialog with no message",
             "Dialog with custom title color",
             "Default Alert Dialog with custom animation loop",
-            "2 buttons cancellable dialog cancel listener"
+            "2 buttons cancellable dialog cancel listener",
+            "Show dialog maintaining fullscreen mode after 2 secs"
         )
 
         val adapter = ArrayAdapter<String>(this,
@@ -145,7 +148,44 @@ class MainActivity : AppCompatActivity() {
                         isCancellable=true
                     }.build().show()
                 }
+                12->{
+                    enterFullScreen()
+                    Handler().postDelayed({
+                        runOnUiThread {
+                            SapDialog(this).apply {
+                                titleText="Lorem ipsum"
+                                messageText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                                addPositiveButton("ok"){
+                                    Toast.makeText(this@MainActivity,"positive button clicked",Toast.LENGTH_SHORT).show()
+                                }
+                                addNegativeButton("cancel"){
+                                    Toast.makeText(this@MainActivity,"negative button clicked",Toast.LENGTH_SHORT).show()
+                                }
+                                addCancelEvent {
+                                    Toast.makeText(this@MainActivity,"dialog cancelled",Toast.LENGTH_SHORT).show()
+                                }
+                                animResource=R.raw.info
+                                loopAnimation=true
+                                isCancellable=true
+                                isFullScreen=true
+                            }.build().show()
+                        }
+                    },2000)
+                }
             }
         }
+    }
+
+    private fun enterFullScreen(){
+        window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                // Set the content to appear under the system bars so that the
+                // content doesn't resize when the system bars hide and show.
+                or View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                // Hide the nav bar and status bar
+                or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                or View.SYSTEM_UI_FLAG_FULLSCREEN)
+
+        supportActionBar?.hide()
     }
 }

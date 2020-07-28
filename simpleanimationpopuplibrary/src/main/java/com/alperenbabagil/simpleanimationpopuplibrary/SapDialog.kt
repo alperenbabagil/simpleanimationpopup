@@ -35,7 +35,7 @@ class SapDialog(private val activity: Activity)  {
     private var negativeButtonVisible =false
     private var animationView : LottieAnimationView?=null
 
-    fun addPositiveButton(buttonText : String,clickEvent : () -> Unit){
+    fun addPositiveButton(buttonText : String,clickEvent : () -> Unit = {}){
         positiveButtonVisible=true
         positiveButtonText=buttonText
         positiveButtonClickEvent=clickEvent
@@ -184,5 +184,15 @@ class SapDialog(private val activity: Activity)  {
         }
 
         return dialogView
+    }
+
+    companion object{
+        var ERROR_RES_ID=R.string.error
+        var WARNING_RES_ID=R.string.warning
+        var INFO_RES_ID=R.string.info
+        var ERROR_TITLE_COLOR_RES=android.R.color.holo_red_dark
+        var WARNING_TITLE_COLOR_RES=android.R.color.holo_orange_dark
+        var INFO_TITLE_COLOR_RES=android.R.color.holo_blue_dark
+        var LOADING_RES_ID=R.string.loading
     }
 }

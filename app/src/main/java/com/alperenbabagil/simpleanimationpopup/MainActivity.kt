@@ -1,16 +1,17 @@
 package com.alperenbabagil.simpleanimationpopup
 
+import android.app.Dialog
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.alperenbabagil.simpleanimationpopuplibrary.SapDialog
+import com.alperenbabagil.simpleanimationpopuplibrary.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SapActivity {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,154 +30,240 @@ class MainActivity : AppCompatActivity() {
             "Dialog with custom title color",
             "Default Alert Dialog with custom animation loop",
             "2 buttons cancellable dialog cancel listener",
-            "Show dialog maintaining fullscreen mode after 2 secs"
+            "Show dialog maintaining fullscreen mode after 2 secs",
+            "Show loading dialog with extension function",
+            "Show warning dialog with extension function",
+            "Show error dialog with extension function",
+            "Show info dialog with extension function"
         )
 
-        val adapter = ArrayAdapter<String>(this,
-            android.R.layout.simple_list_item_1, android.R.id.text1, values);
+        val adapter = ArrayAdapter<String>(
+            this,
+            android.R.layout.simple_list_item_1, android.R.id.text1, values
+        );
 
-        listView.adapter=adapter
+        listView.adapter = adapter
 
         listView.setOnItemClickListener { parent, view, position, id ->
-            when (position){
-                0->{
+            when (position) {
+                0 -> {
                     SapDialog(this).apply {
-                        titleText="Lorem ipsum"
-                        messageText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
-                        addPositiveButton("ok"){
-                            Toast.makeText(this@MainActivity,"positive button clicked",Toast.LENGTH_SHORT).show()
+                        titleText = "Lorem ipsum"
+                        messageText =
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                        addPositiveButton("ok") {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "positive button clicked",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }.build().show()
                 }
 
-                1->{
+                1 -> {
                     SapDialog(this).apply {
-                        titleText="Lorem ipsum"
-                        messageText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
-                        addPositiveButton("ok"){
-                            Toast.makeText(this@MainActivity,"positive button clicked",Toast.LENGTH_SHORT).show()
+                        titleText = "Lorem ipsum"
+                        messageText =
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                        addPositiveButton("ok") {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "positive button clicked",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                        addNegativeButton("cancel"){
-                            Toast.makeText(this@MainActivity,"negative button clicked",Toast.LENGTH_SHORT).show()
+                        addNegativeButton("cancel") {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "negative button clicked",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }.build().show()
                 }
 
-                2->{
+                2 -> {
                     SapDialog(this).apply {
-                        titleText="Lorem ipsum"
-                        messageText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
-                        isCancellable=true
+                        titleText = "Lorem ipsum"
+                        messageText =
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                        isCancellable = true
                     }.build().show()
                 }
 
-                3->{
+                3 -> {
                     SapDialog(this).apply {
-                        titleText="Lorem ipsum"
-                        messageText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
-                        addPositiveButton("ok"){
-                            Toast.makeText(this@MainActivity,"positive button clicked",Toast.LENGTH_SHORT).show()
+                        titleText = "Lorem ipsum"
+                        messageText =
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                        addPositiveButton("ok") {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "positive button clicked",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                        animResource=R.raw.info
+                        animResource = R.raw.info
                     }.build().show()
                 }
-                4->{
+                4 -> {
                     SapDialog(this).apply {
-                        isOnlyAnimation=true
+                        isOnlyAnimation = true
                     }.build().show()
                 }
-                5->{
+                5 -> {
                     SapDialog(this).apply {
-                        isOnlyAnimation=true
-                        animResource=R.raw.loading
+                        isOnlyAnimation = true
+                        animResource = R.raw.loading
                     }.build().show()
                 }
-                6->{
+                6 -> {
                     SapDialog(this).apply {
-                        isOnlyAnimation=true
-                        isCancellable=true
+                        isOnlyAnimation = true
+                        isCancellable = true
                     }.build().show()
                 }
-                7->{
+                7 -> {
                     SapDialog(this).apply {
-                        isOnlyAnimation=true
-                        isCancellable=true
+                        isOnlyAnimation = true
+                        isCancellable = true
                         addDismissEvent {
-                            Toast.makeText(this@MainActivity,"dialog dismissed",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@MainActivity,
+                                "dialog dismissed",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     }.build().show()
                 }
-                8->{
+                8 -> {
                     SapDialog(this).apply {
-                        titleText="Lorem ipsum"
-                        isCancellable=true
+                        titleText = "Lorem ipsum"
+                        isCancellable = true
                     }.build().show()
                 }
-                9->{
+                9 -> {
                     SapDialog(this).apply {
-                        titleText="Lorem ipsum"
-                        isCancellable=true
-                        titleTextColor=R.color.colorAccent
+                        titleText = "Lorem ipsum"
+                        isCancellable = true
+                        titleTextColor = R.color.colorAccent
                     }.build().show()
                 }
-                10->{
+                10 -> {
                     SapDialog(this).apply {
-                        titleText="Lorem ipsum"
-                        messageText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
-                        addPositiveButton("ok"){
-                            Toast.makeText(this@MainActivity,"positive button clicked",Toast.LENGTH_SHORT).show()
+                        titleText = "Lorem ipsum"
+                        messageText =
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                        addPositiveButton("ok") {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "positive button clicked",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                        animResource=R.raw.info
-                        loopAnimation=true
+                        animResource = R.raw.info
+                        loopAnimation = true
                     }.build().show()
                 }
-                11->{
+                11 -> {
                     SapDialog(this).apply {
-                        titleText="Lorem ipsum"
-                        messageText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
-                        addPositiveButton("ok"){
-                            Toast.makeText(this@MainActivity,"positive button clicked",Toast.LENGTH_SHORT).show()
+                        titleText = "Lorem ipsum"
+                        messageText =
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                        addPositiveButton("ok") {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "positive button clicked",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                        addNegativeButton("cancel"){
-                            Toast.makeText(this@MainActivity,"negative button clicked",Toast.LENGTH_SHORT).show()
+                        addNegativeButton("cancel") {
+                            Toast.makeText(
+                                this@MainActivity,
+                                "negative button clicked",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                         addCancelEvent {
-                            Toast.makeText(this@MainActivity,"dialog cancelled",Toast.LENGTH_SHORT).show()
+                            Toast.makeText(
+                                this@MainActivity,
+                                "dialog cancelled",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                        animResource=R.raw.info
-                        loopAnimation=true
-                        isCancellable=true
+                        animResource = R.raw.info
+                        loopAnimation = true
+                        isCancellable = true
                     }.build().show()
                 }
-                12->{
+                12 -> {
                     enterFullScreen()
                     Handler().postDelayed({
                         runOnUiThread {
                             SapDialog(this).apply {
-                                titleText="Lorem ipsum"
-                                messageText="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
-                                addPositiveButton("ok"){
-                                    Toast.makeText(this@MainActivity,"positive button clicked",Toast.LENGTH_SHORT).show()
+                                titleText = "Lorem ipsum"
+                                messageText =
+                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+                                addPositiveButton("ok") {
+                                    Toast.makeText(
+                                        this@MainActivity,
+                                        "positive button clicked",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
-                                addNegativeButton("cancel"){
-                                    Toast.makeText(this@MainActivity,"negative button clicked",Toast.LENGTH_SHORT).show()
+                                addNegativeButton("cancel") {
+                                    Toast.makeText(
+                                        this@MainActivity,
+                                        "negative button clicked",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
                                 addCancelEvent {
-                                    Toast.makeText(this@MainActivity,"dialog cancelled",Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        this@MainActivity,
+                                        "dialog cancelled",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
-                                animResource=R.raw.info
-                                loopAnimation=true
-                                isCancellable=true
-                                isFullScreen=true
+                                animResource = R.raw.info
+                                loopAnimation = true
+                                isCancellable = true
+                                isFullScreen = true
                             }.build().show()
                         }
-                    },2000)
+                    }, 2000)
+                }
+                13 -> {
+                    showLoadingDialog(isCancellable = true){
+                        //dialog is cancelled
+                    }
+                }
+                14 -> {
+                    showWarningDialog(
+                        warningStr = "This is a warning string", positiveButton = Pair(
+                            "Wow, I'm warned", null
+                        )
+                    )
+                }
+                15 -> {
+                    showErrorDialog(titleRes = R.string.dangerous_error, positiveButton = Pair(
+                        "ok", {
+                            //run error positive button clicked
+                        }
+                    ), negativeButton = Pair("whatever", {
+                        //run error negative button clicked
+                    })
+                    )
+                }
+                16 -> {
+                    showInfoDialog(infoStr = "you are informed",isCancellable = true)
                 }
             }
         }
     }
 
-    private fun enterFullScreen(){
+    private fun enterFullScreen() {
         window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
                 // Set the content to appear under the system bars so that the
                 // content doesn't resize when the system bars hide and show.
@@ -188,4 +275,6 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.hide()
     }
+
+    override var currentDialog: Dialog? = null
 }

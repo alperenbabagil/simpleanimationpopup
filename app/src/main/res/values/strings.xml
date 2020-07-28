@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Simple Animation Popup</string>
+    <string name="app_name">Simple Animation Popup Demo</string>
+    <string name="dangerous_error">Dangerous error</string>
 </resources>

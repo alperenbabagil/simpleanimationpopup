@@ -31,8 +31,12 @@ fun SapActivity.showDefaultDialog(
     isFullScreen: Boolean = false,
     autoStartAnimation: Boolean = true,
     loopAnimation: Boolean = false,
-    positiveButton: Pair<String, (() -> Unit)?>?,
-    negativeButton: Pair<String, (() -> Unit)?>?
+    positiveButtonStrRes:Int?=null,
+    positiveButtonStr:String?=null,
+    positiveButtonClick:(() -> Unit)?=null,
+    negativeButtonStrRes:Int?=null,
+    negativeButtonStr:String?=null,
+    negativeButtonClick:(() -> Unit)?=null
 ) {
     val activity = this as Activity
     val sapActivity = this as SapActivity
@@ -58,12 +62,26 @@ fun SapActivity.showDefaultDialog(
                 activity.getString(it)
             }
         }
-        positiveButton?.let {
-            dialog.addPositiveButton(it.first, it.second ?: {})
+        positiveButtonStr?.let { btnStr->
+            positiveButtonClick?.let {
+                dialog.addPositiveButton(btnStr,it)
+            } ?: dialog.addPositiveButton(btnStr){}
+        } ?: positiveButtonStrRes?.let {btnStrRes->
+            positiveButtonClick?.let {
+                dialog.addPositiveButton(activity.getString(btnStrRes),it)
+            } ?: dialog.addPositiveButton(activity.getString(btnStrRes)){}
         }
-        negativeButton?.let {
-            dialog.addNegativeButton(it.first, it.second ?: {})
+
+        negativeButtonStr?.let { btnStr->
+            negativeButtonClick?.let {
+                dialog.addNegativeButton(btnStr,it)
+            } ?: dialog.addNegativeButton(btnStr){}
+        } ?: negativeButtonStrRes?.let {btnStrRes->
+            negativeButtonClick?.let {
+                dialog.addNegativeButton(activity.getString(btnStrRes),it)
+            } ?: dialog.addNegativeButton(activity.getString(btnStrRes)){}
         }
+
     }.build().show()
 }
 
@@ -79,8 +97,12 @@ fun SapActivity.showWarningDialog(
     isFullScreen: Boolean = false,
     autoStartAnimation: Boolean = true,
     loopAnimation: Boolean = false,
-    positiveButton: Pair<String, (() -> Unit)?>?=null,
-    negativeButton: Pair<String, (() -> Unit)?>?=null
+    positiveButtonStrRes:Int?=null,
+    positiveButtonStr:String?=null,
+    positiveButtonClick:(() -> Unit)?=null,
+    negativeButtonStrRes:Int?=null,
+    negativeButtonStr:String?=null,
+    negativeButtonClick:(() -> Unit)?=null
 ) = showDefaultDialog(
     titleRes,
     titleStr,
@@ -92,8 +114,12 @@ fun SapActivity.showWarningDialog(
     isFullScreen,
     autoStartAnimation,
     loopAnimation,
-    positiveButton,
-    negativeButton
+    positiveButtonStrRes,
+    positiveButtonStr,
+    positiveButtonClick,
+    negativeButtonStrRes,
+    negativeButtonStr,
+    negativeButtonClick
 )
 
 
@@ -108,8 +134,12 @@ fun SapActivity.showErrorDialog(
     isFullScreen: Boolean = false,
     autoStartAnimation: Boolean = true,
     loopAnimation: Boolean = false,
-    positiveButton: Pair<String, (() -> Unit)?>?=null,
-    negativeButton: Pair<String, (() -> Unit)?>?=null
+    positiveButtonStrRes:Int?=null,
+    positiveButtonStr:String?=null,
+    positiveButtonClick:(() -> Unit)?=null,
+    negativeButtonStrRes:Int?=null,
+    negativeButtonStr:String?=null,
+    negativeButtonClick:(() -> Unit)?=null
 ) = showDefaultDialog(
     titleRes,
     titleStr,
@@ -121,8 +151,12 @@ fun SapActivity.showErrorDialog(
     isFullScreen,
     autoStartAnimation,
     loopAnimation,
-    positiveButton,
-    negativeButton
+    positiveButtonStrRes,
+    positiveButtonStr,
+    positiveButtonClick,
+    negativeButtonStrRes,
+    negativeButtonStr,
+    negativeButtonClick
 )
 
 fun SapActivity.showInfoDialog(
@@ -136,8 +170,12 @@ fun SapActivity.showInfoDialog(
     isFullScreen: Boolean = false,
     autoStartAnimation: Boolean = true,
     loopAnimation: Boolean = false,
-    positiveButton: Pair<String, (() -> Unit)?>?=null,
-    negativeButton: Pair<String, (() -> Unit)?>?=null
+    positiveButtonStrRes:Int?=null,
+    positiveButtonStr:String?=null,
+    positiveButtonClick:(() -> Unit)?=null,
+    negativeButtonStrRes:Int?=null,
+    negativeButtonStr:String?=null,
+    negativeButtonClick:(() -> Unit)?=null
 ) = showDefaultDialog(
     titleRes,
     titleStr,
@@ -149,8 +187,12 @@ fun SapActivity.showInfoDialog(
     isFullScreen,
     autoStartAnimation,
     loopAnimation,
-    positiveButton,
-    negativeButton
+    positiveButtonStrRes,
+    positiveButtonStr,
+    positiveButtonClick,
+    negativeButtonStrRes,
+    negativeButtonStr,
+    negativeButtonClick
 )
 
 

@@ -241,19 +241,20 @@ class MainActivity : AppCompatActivity(), SapActivity {
                 }
                 14 -> {
                     showWarningDialog(
-                        warningStr = "This is a warning string", positiveButton = Pair(
-                            "Wow, I'm warned", null
-                        )
+                        warningStr = "This is a warning string",
+                        positiveButtonStr =  "Wow, I'm warned"
                     )
                 }
                 15 -> {
-                    showErrorDialog(titleRes = R.string.dangerous_error, positiveButton = Pair(
-                        "ok", {
-                            //run error positive button clicked
+                    showErrorDialog(titleRes = R.string.dangerous_error,
+                        positiveButtonStrRes = R.string.ok,
+                        positiveButtonClick = {
+                            // run error negative button clicked
+                        },
+                        negativeButtonStr = "whatever",
+                        negativeButtonClick = {
+                            // run error negative button clicked
                         }
-                    ), negativeButton = Pair("whatever", {
-                        //run error negative button clicked
-                    })
                     )
                 }
                 16 -> {

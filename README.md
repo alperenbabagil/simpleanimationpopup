@@ -15,7 +15,7 @@ allprojects {
 ```
 Add the dependency
 ```gradle
-implementation 'com.github.alperenbabagil:simpleanimationpopup:1.0.3'
+implementation 'com.github.alperenbabagil:simpleanimationpopup:1.1.0'
 ```
 
 ## Usage
@@ -39,6 +39,27 @@ SapDialog(this).apply {
 }.build().show()
 ```
 ![](https://media.giphy.com/media/eGsR8bv3VNM40iKYK7/giphy.gif)
+
+If you want to use predefined extension functions, your activity must extend `SapActivity`. It handles `currentDialog.dismiss()` and assigns new dialog to interface's `currentDialog` variable. The extension gives `showDefaultDialog`, `showErrorDialog`, `showWarningDialog`, `showLoadingDialog` and `showInfoDialog` functions.
+```kotlin
+showWarningDialog(
+  warningStr = "This is a warning string", positiveButton = Pair(
+    "Wow, I'm warned", null)
+  )
+```
+```kotlin
+showErrorDialog(titleRes = R.string.dangerous_error, positiveButton = Pair(
+  "ok", {
+    //run error positive button clicked
+  }
+), negativeButton = Pair("whatever", {
+    //run error negative button clicked
+  })
+)
+```
+```kotlin
+showInfoDialog(infoStr = "you are informed",isCancellable = true)
+```
 
 ## Customization
 The popup is highly customizable, you can even load entire custom layout. All you have to do is create xml,style with name library used. By default library uses `colorPrimary`, `colorPrimaryDark` and `colorAccent` values that app uses.

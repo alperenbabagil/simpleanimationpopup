@@ -43,18 +43,20 @@ SapDialog(this).apply {
 If you want to use predefined extension functions, your activity must extend `SapActivity`. It handles `currentDialog.dismiss()` and assigns new dialog to interface's `currentDialog` variable. The extension gives `showDefaultDialog`, `showErrorDialog`, `showWarningDialog`, `showLoadingDialog` and `showInfoDialog` functions.
 ```kotlin
 showWarningDialog(
-  warningStr = "This is a warning string", positiveButton = Pair(
-    "Wow, I'm warned", null)
-  )
+    warningStr = "This is a warning string",
+    positiveButtonStr =  "Wow, I'm warned"
+)
 ```
 ```kotlin
-showErrorDialog(titleRes = R.string.dangerous_error, positiveButton = Pair(
-  "ok", {
-    //run error positive button clicked
-  }
-), negativeButton = Pair("whatever", {
-    //run error negative button clicked
-  })
+showErrorDialog(titleRes = R.string.dangerous_error,
+    positiveButtonStrRes = R.string.ok,
+    positiveButtonClick = {
+        // run error negative button clicked
+    },
+    negativeButtonStr = "whatever",
+    negativeButtonClick = {
+        // run error negative button clicked
+    }
 )
 ```
 ```kotlin

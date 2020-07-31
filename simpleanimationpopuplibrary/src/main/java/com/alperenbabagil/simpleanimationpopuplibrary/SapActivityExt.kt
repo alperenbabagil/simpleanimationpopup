@@ -26,7 +26,7 @@ fun SapActivity.showDefaultDialog(
     msgStr: String? = null,
     msgRes: Int? = null,
     animRes: Int? = null,
-    titleColorRes: Int?,
+    titleColorRes: Int=R.color.colorPrimary,
     isCancellable: Boolean = false,
     isFullScreen: Boolean = false,
     autoStartAnimation: Boolean = true,
@@ -47,11 +47,9 @@ fun SapActivity.showDefaultDialog(
         dialog.loopAnimation = loopAnimation
         dialog.autoStartAnimation = autoStartAnimation
         dialog.isFullScreen = isFullScreen
-        titleColorRes?.let {
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
-                dialog.titleTextColor = activity.getColor(it)
-            else dialog.titleTextColor = activity.resources.getColor(it)
-        }
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            dialog.titleTextColor = activity.getColor(titleColorRes)
+        else dialog.titleTextColor = activity.resources.getColor(titleColorRes)
         dialog.messageText = msgStr ?: let {
             msgRes?.let {
                 activity.getString(it)
@@ -166,7 +164,7 @@ fun SapActivity.showInfoDialog(
     infoRes: Int? = null,
     animRes: Int = R.raw.sap_info_anim,
     titleColorRes: Int = SapDialog.INFO_TITLE_COLOR_RES,
-    isCancellable: Boolean = false,
+    isCancellable: Boolean = true,
     isFullScreen: Boolean = false,
     autoStartAnimation: Boolean = true,
     loopAnimation: Boolean = false,

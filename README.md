@@ -65,6 +65,7 @@ showInfoDialog(infoStr = "you are informed",isCancellable = true)
 
 ## Fragment Support
 You can show dialogs by using fragment's parent activity or fragment itself. If you use fragment itself the dialog and dimmed background seen in the fragment boundaries. By this way each fragment will have it's own dialog. If you want to use fragment extensions your fragment must extend `SapFragment` interface. It gives same extension functions with the `SapActivity`
+
 <img src="https://i.ibb.co/BfN2gb7/wp.jpg" width="280" height="600" />
 
 ## Customization

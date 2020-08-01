@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/SapLayoutStyle"
+    android:clickable="true"
+    android:focusable="true"
     >
 
     <TextView
@@ -11,9 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Title"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+         />
 
     <com.airbnb.lottie.LottieAnimationView
         app:layout_constraintTop_toBottomOf="@id/sapTitleTv"
@@ -22,6 +27,8 @@
         android:id="@+id/sapAnimationView"
         style="@style/SapAnimationStyle"
         app:lottie_loop="false"
+        android:clickable="true"
+        android:focusable="true"
         android:scaleType="centerCrop"
         app:lottie_autoPlay="true"/>
 
@@ -30,6 +37,8 @@
         android:text="Bla bla... Bla bla...Bla bla...Bla bla...Bla bla...Bla bla...Bla bla...Bla bla..."
         style="@style/SapMessageTVStyle"
         android:id="@+id/sapMessageTv"
+        android:clickable="true"
+        android:focusable="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </TextView>

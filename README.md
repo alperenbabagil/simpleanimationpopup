@@ -15,7 +15,7 @@ allprojects {
 ```
 Add the dependency
 ```gradle
-implementation 'com.github.alperenbabagil:simpleanimationpopup:1.1.2'
+implementation 'com.github.alperenbabagil:simpleanimationpopup:1.2.0'
 ```
 
 ## Usage
@@ -62,6 +62,11 @@ showErrorDialog(titleRes = R.string.dangerous_error,
 ```kotlin
 showInfoDialog(infoStr = "you are informed",isCancellable = true)
 ```
+
+## Fragment Support
+You can show dialogs by using fragment's parent activity or fragment itself. If you use fragment itself the dialog and dimmed background seen in the fragment boundaries. By this way each fragment will have it's own dialog. If you want to use fragment extensions your fragment must extend `SapFragment` interface. It gives same extension functions with the `SapActivity`
+
+<img src="https://i.ibb.co/BfN2gb7/wp.jpg" width="280" height="600" />
 
 ## Customization
 The popup is highly customizable, you can even load entire custom layout. All you have to do is create xml,style with name library used. By default library uses `colorPrimary`, `colorPrimaryDark` and `colorAccent` values that app uses.

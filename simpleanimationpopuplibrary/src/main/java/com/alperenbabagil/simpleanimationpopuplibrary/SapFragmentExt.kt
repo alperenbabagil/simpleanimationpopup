@@ -31,6 +31,7 @@ fun SapFragment.showLoadingDialog(
     isCancellable: Boolean = false,
     sapCancelEvent: () -> Unit = {}
 ) {
+    removeCurrentDialog()
     ((this as? Fragment)?.activity)?.let {_->
         (this.view as? ViewGroup)?.let { viewGroup ->
             this.layoutInflater.inflate(R.layout.fragment_loading_dialog_layout, viewGroup, false)

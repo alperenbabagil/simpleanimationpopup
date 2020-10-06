@@ -15,7 +15,7 @@ allprojects {
 ```
 Add the dependency
 ```gradle
-implementation 'com.github.alperenbabagil:simpleanimationpopup:1.2.1'
+implementation 'com.github.alperenbabagil:simpleanimationpopup:1.2.2'
 ```
 
 ## Usage

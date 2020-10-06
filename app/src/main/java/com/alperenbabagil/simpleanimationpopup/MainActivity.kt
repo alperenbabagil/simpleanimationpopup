@@ -18,6 +18,11 @@ class MainActivity : AppCompatActivity(), SapActivity {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // you can safely call it in the onCreate()
+        showLoadingDialog(isCancellable = true) {
+
+        }
+
         val values = arrayOf(
             "Default Alert Dialog with one button",
             "Default Alert Dialog with two buttons",

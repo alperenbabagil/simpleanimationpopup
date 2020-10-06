@@ -1,7 +1,11 @@
 package com.alperenbabagil.simpleanimationpopuplibrary
 
 import android.app.Activity
+import android.app.Dialog
 import android.os.Build
+import android.os.Handler
+import androidx.activity.ComponentActivity
+import androidx.lifecycle.Lifecycle
 
 
 fun SapActivity.showLoadingDialog(
@@ -9,7 +13,7 @@ fun SapActivity.showLoadingDialog(
     isCancellable: Boolean = false,
     sapCancelEvent: () -> Unit = {}
 ) {
-    val activity = this as Activity
+    val activity = this as ComponentActivity
     val sapActivity = this as SapActivity
     sapActivity.currentDialog?.dismiss()
     sapActivity.currentDialog = SapDialog(activity).also { dialog ->
@@ -17,7 +21,13 @@ fun SapActivity.showLoadingDialog(
         dialog.animResource = animRes
         dialog.isCancellable = isCancellable
         dialog.addCancelEvent(sapCancelEvent)
-    }.build().show()
+    }.build().dialog
+    if(!activity.lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)){
+        Handler().post {
+            sapActivity.currentDialog!!.show()
+        }
+    }
+    else sapActivity.currentDialog!!.show()
 }
 
 fun SapActivity.showDefaultDialog(
@@ -38,7 +48,7 @@ fun SapActivity.showDefaultDialog(
     negativeButtonStr:String?=null,
     negativeButtonClick:(() -> Unit)?=null
 ) {
-    val activity = this as Activity
+    val activity = this as ComponentActivity
     val sapActivity = this as SapActivity
     sapActivity.currentDialog?.dismiss()
     sapActivity.currentDialog = SapDialog(activity).also { dialog ->
@@ -80,7 +90,13 @@ fun SapActivity.showDefaultDialog(
             } ?: dialog.addNegativeButton(activity.getString(btnStrRes)){}
         }
 
-    }.build().show()
+    }.build().dialog
+    if(!activity.lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)){
+        Handler().post {
+            sapActivity.currentDialog!!.show()
+        }
+    }
+    else sapActivity.currentDialog!!.show()
 }
 
 

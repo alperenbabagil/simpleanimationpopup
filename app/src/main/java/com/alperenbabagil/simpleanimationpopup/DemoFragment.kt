@@ -271,6 +271,11 @@ class DemoFragment : Fragment(),SapFragment{
                 }
             }
         }
+
+        // you can safely call it in the onViewCreated()
+        showLoadingDialog(isCancellable = true) {
+
+        }
     }
 
     companion object{

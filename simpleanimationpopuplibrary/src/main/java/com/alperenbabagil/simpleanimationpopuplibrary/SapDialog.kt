@@ -15,7 +15,7 @@ import com.airbnb.lottie.LottieDrawable.INFINITE
 
 class SapDialog(private val activity: Activity)  {
 
-    private lateinit var dialog : Dialog
+    lateinit var dialog : Dialog
     private var positiveButtonText: String?=null
     private var negativeButtonText: String?=null
     var titleText: String?=null

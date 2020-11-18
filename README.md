@@ -1,3 +1,4 @@
+[![](https://jitpack.io/v/alperenbabagil/simpleanimationpopup.svg)](https://jitpack.io/#alperenbabagil/simpleanimationpopup)
 # Simple Animation Popup
 Showing popup with an animation view easily. It is based on Android.Dialog and compatible with Sdk v16 and higher.
 
@@ -15,7 +16,7 @@ allprojects {
 ```
 Add the dependency
 ```gradle
-implementation 'com.github.alperenbabagil:simpleanimationpopup:1.2.2'
+implementation "com.github.alperenbabagil:simpleanimationpopup:$version"
 ```
 
 ## Usage

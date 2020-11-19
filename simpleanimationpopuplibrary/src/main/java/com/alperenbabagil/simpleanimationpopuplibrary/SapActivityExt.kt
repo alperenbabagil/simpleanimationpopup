@@ -1,7 +1,5 @@
 package com.alperenbabagil.simpleanimationpopuplibrary
 
-import android.app.Activity
-import android.app.Dialog
 import android.os.Build
 import android.os.Handler
 import androidx.activity.ComponentActivity

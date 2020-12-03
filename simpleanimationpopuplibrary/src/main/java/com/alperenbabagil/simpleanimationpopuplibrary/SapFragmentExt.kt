@@ -2,6 +2,7 @@ package com.alperenbabagil.simpleanimationpopuplibrary
 
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import com.airbnb.lottie.LottieAnimationView
 import com.airbnb.lottie.LottieDrawable
@@ -10,6 +11,22 @@ fun SapFragment.addDialog(view: View) {
     ((this as? Fragment)?.view as? ViewGroup)?.let {
         currentDialogView = view
         it.addView(view, it.layoutParams)
+        val backCallback= onBackPressedCallback?.apply {isEnabled=true} ?: object :
+            OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                currentDialogView?.let {
+                    if(it.visibility == View.VISIBLE) removeCurrentDialog()
+                    else {
+                        this.isEnabled=false
+                        activity?.onBackPressedDispatcher?.onBackPressed()
+                    }
+                } ?: run{
+                    this.isEnabled=false
+                    activity?.onBackPressedDispatcher?.onBackPressed()
+                }
+            }
+        }
+        (this as? Fragment)?.activity?.onBackPressedDispatcher?.addCallback(this,backCallback)
     }
 }
 
@@ -17,7 +34,10 @@ fun SapFragment.removeCurrentDialog() {
     ((this as? Fragment)?.view as? ViewGroup)?.let { rootView ->
         currentDialogView?.let {
             try {
+                onBackPressedCallback?.apply{ isEnabled=false }?.remove()
+                it.visibility=View.GONE
                 rootView.removeView(it)
+                rootView.invalidate()
             } catch (e: Exception) {
                 e.printStackTrace()
                 //most probably view does not exists

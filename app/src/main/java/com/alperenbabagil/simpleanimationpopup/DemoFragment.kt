@@ -6,12 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.alperenbabagil.simpleanimationpopuplibrary.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class DemoFragment : Fragment(),SapFragment{
     override var currentDialogView: View?=null
+    override var onBackPressedCallback: OnBackPressedCallback?=null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -167,7 +170,7 @@ class DemoFragment : Fragment(),SapFragment{
                             Toast.makeText(
                                 requireActivity(),
                                 "positive button clicked",
-                                Toast.LENGTH_SHORT
+                                    Toast.LENGTH_SHORT
                             ).show()
                         }
                         animResource = R.raw.info
@@ -270,11 +273,6 @@ class DemoFragment : Fragment(),SapFragment{
                     )
                 }
             }
-        }
-
-        // you can safely call it in the onViewCreated()
-        showLoadingDialog(isCancellable = true) {
-
         }
     }
 

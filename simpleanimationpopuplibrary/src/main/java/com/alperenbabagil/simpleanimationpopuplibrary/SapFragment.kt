@@ -1,8 +1,10 @@
 package com.alperenbabagil.simpleanimationpopuplibrary
 
 import android.view.View
-import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 
 interface SapFragment {
     var currentDialogView: View?
+
+    var onBackPressedCallback: OnBackPressedCallback?
 }

@@ -23,6 +23,9 @@ class MainActivity : AppCompatActivity(), SapActivity {
 
         }
 
+        // you can safely call it in the onCreate()
+        removeCurrentDialog()
+
         val values = arrayOf(
             "Default Alert Dialog with one button",
             "Default Alert Dialog with two buttons",

@@ -15,7 +15,7 @@ fun SapActivity.showLoadingDialog(
 ) {
     val activity = this as ComponentActivity
     val sapActivity = this as SapActivity
-    sapActivity.currentDialog?.dismiss()
+    sapActivity.removeCurrentDialog()
     sapActivity.currentDialog = SapDialog(activity).also { dialog ->
         dialog.isOnlyAnimation = true
         dialog.animResource = animRes
@@ -28,6 +28,16 @@ fun SapActivity.showLoadingDialog(
         }
     }
     else sapActivity.currentDialog!!.show()
+}
+
+fun SapActivity.removeCurrentDialog(){
+    val activity = this as ComponentActivity
+    if(!activity.lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)){
+        Handler().post {
+            currentDialog?.dismiss()
+        }
+    }
+    else currentDialog?.dismiss()
 }
 
 fun SapActivity.showDefaultDialog(
@@ -50,7 +60,7 @@ fun SapActivity.showDefaultDialog(
 ) {
     val activity = this as ComponentActivity
     val sapActivity = this as SapActivity
-    sapActivity.currentDialog?.dismiss()
+    sapActivity.removeCurrentDialog()
     sapActivity.currentDialog = SapDialog(activity).also { dialog ->
         dialog.animResource = animRes
         dialog.isCancellable = isCancellable
